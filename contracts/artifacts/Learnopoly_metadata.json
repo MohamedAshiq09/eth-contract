@@ -22,6 +22,50 @@
 					{
 						"indexed": false,
 						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					}
+				],
+				"name": "CourseCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "courseId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "student",
+						"type": "address"
+					}
+				],
+				"name": "CourseEnrolled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
 						"name": "name",
 						"type": "string"
 					},
@@ -105,6 +149,71 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "courseCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "courses",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "createCourse",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -148,17 +257,30 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "courseId",
+						"type": "uint256"
 					}
 				],
-				"name": "getEnrolledHackathons",
+				"name": "enrollInCourse",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "courseId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCourseStudents",
 				"outputs": [
 					{
-						"internalType": "uint256[]",
+						"internalType": "address[]",
 						"name": "",
-						"type": "uint256[]"
+						"type": "address[]"
 					}
 				],
 				"stateMutability": "view",
@@ -178,6 +300,44 @@
 						"internalType": "address[]",
 						"name": "",
 						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getUserEnrolledCourses",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getUserEnrolledHackathons",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
 					}
 				],
 				"stateMutability": "view",
@@ -269,24 +429,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "role",
-						"type": "string"
-					}
-				],
-				"name": "registerUser",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -331,7 +473,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/myContract.sol": "Learnopoly"
+			"contracts/mycontract2.sol": "Learnopoly"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -345,12 +487,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/myContract.sol": {
-			"keccak256": "0xba3c7c5fed10aa6aad3bef5acc4daf9c21b014ea38c9e9d949d5415ba7535986",
+		"contracts/mycontract2.sol": {
+			"keccak256": "0x060214b88dd2a1397e7d799aaad2bffa60c87bafeff1bd0d0bc741bd4dd41b29",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79bc247ee792b20fabfdf1bfa0cf7a7d75d83ff5e2f34e42c3e6f497e8dee1af",
-				"dweb:/ipfs/QmYnV72PV4Y6rKaa2YPeFY3JnpnULhmSMx91uXK8CB1egD"
+				"bzz-raw://77bc8a83dea3fa525c976b821295b2e23b73a7dcefb82c1cee3fcacfa6301cb4",
+				"dweb:/ipfs/Qmb8wWPgne9CnXH96M1ddjYvQeWVHcc7ArXp2QTGbPQfkR"
 			]
 		}
 	},
