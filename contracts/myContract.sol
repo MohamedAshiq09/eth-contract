@@ -5,7 +5,7 @@ contract Learnopoly {
     struct User {
         address walletAddress;
         string name;
-        string role; // learner, mentor, organizer
+        string role; 
         uint256[] enrolledHackathons;
     }
 
