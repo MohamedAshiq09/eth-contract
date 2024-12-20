@@ -80,7 +80,7 @@ contract LearnopolyPlatform is ReentrancyGuard, Ownable {
     event MentorshipRequested(address indexed mentee, address indexed mentor);
     event ConnectionMade(address indexed user1, address indexed user2);
 
-    // Constructor with initialOwner parameter
+    
     constructor(address initialOwner) Ownable(initialOwner) {
         courseCount = 0;
         eventCount = 0;
@@ -88,7 +88,7 @@ contract LearnopolyPlatform is ReentrancyGuard, Ownable {
         badgeCount = 0;
     }
 
-    // Modifiers
+    
     modifier onlyRegistered() {
         require(bytes(profiles[msg.sender].username).length > 0, "Not registered");
         _;
@@ -99,7 +99,7 @@ contract LearnopolyPlatform is ReentrancyGuard, Ownable {
         _;
     }
 
-    // Profile Management Functions
+   
     function createProfile(
         string memory username,
         string memory role,
@@ -117,7 +117,7 @@ contract LearnopolyPlatform is ReentrancyGuard, Ownable {
         emit ProfileCreated(msg.sender, username, role);
     }
 
-    // Course Management Functions
+    
     function createCourse(
         string memory title,
         string memory description,
@@ -154,7 +154,7 @@ contract LearnopolyPlatform is ReentrancyGuard, Ownable {
         emit CourseEnrolled(courseId, msg.sender);
     }
 
-    // Event Management Functions
+    
     function createEvent(
         string memory title,
         string memory description,
