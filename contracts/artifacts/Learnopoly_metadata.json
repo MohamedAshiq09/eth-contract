@@ -14,9 +14,9 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
-						"name": "id",
+						"name": "courseId",
 						"type": "uint256"
 					},
 					{
@@ -27,8 +27,14 @@
 					},
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
 						"internalType": "address",
-						"name": "creator",
+						"name": "instructor",
 						"type": "address"
 					}
 				],
@@ -39,103 +45,53 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "courseId",
 						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "student",
-						"type": "address"
 					}
 				],
-				"name": "CourseEnrolled",
+				"name": "CoursePurchased",
 				"type": "event"
 			},
 			{
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "organizer",
-						"type": "address"
-					}
-				],
-				"name": "HackathonCreated",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "hackathonId",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "participant",
-						"type": "address"
-					}
-				],
-				"name": "HackathonJoined",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "hackathonId",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "winner",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "prize",
-						"type": "uint256"
-					}
-				],
-				"name": "PrizeDistributed",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "address",
 						"name": "user",
 						"type": "address"
 					},
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "points",
+						"type": "uint256"
+					}
+				],
+				"name": "PointsEarned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
 						"internalType": "string",
-						"name": "name",
+						"name": "username",
 						"type": "string"
 					},
 					{
@@ -150,7 +106,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "courseCounter",
+				"name": "courseCount",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -182,13 +138,18 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "price",
 						"type": "uint256"
 					},
 					{
 						"internalType": "address",
-						"name": "creator",
+						"name": "instructor",
 						"type": "address"
 					}
 				],
@@ -200,6 +161,11 @@
 					{
 						"internalType": "string",
 						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
 						"type": "string"
 					},
 					{
@@ -216,40 +182,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
 						"internalType": "uint256",
-						"name": "registrationFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "prizePool",
+						"name": "points",
 						"type": "uint256"
 					}
 				],
-				"name": "createHackathon",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "hackathonId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "winner",
-						"type": "address"
-					}
-				],
-				"name": "distributePrize",
+				"name": "earnPoints",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -262,139 +200,27 @@
 						"type": "uint256"
 					}
 				],
-				"name": "enrollInCourse",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "courseId",
-						"type": "uint256"
-					}
-				],
-				"name": "getCourseStudents",
+				"name": "getCourseDetails",
 				"outputs": [
 					{
-						"internalType": "address[]",
-						"name": "",
-						"type": "address[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "hackathonId",
-						"type": "uint256"
-					}
-				],
-				"name": "getHackathonParticipants",
-				"outputs": [
-					{
-						"internalType": "address[]",
-						"name": "",
-						"type": "address[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					}
-				],
-				"name": "getUserEnrolledCourses",
-				"outputs": [
-					{
-						"internalType": "uint256[]",
-						"name": "",
-						"type": "uint256[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					}
-				],
-				"name": "getUserEnrolledHackathons",
-				"outputs": [
-					{
-						"internalType": "uint256[]",
-						"name": "",
-						"type": "uint256[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "hackathonCounter",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "hackathons",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "name",
+						"name": "description",
 						"type": "string"
 					},
 					{
 						"internalType": "uint256",
-						"name": "registrationFee",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "prizePool",
+						"name": "price",
 						"type": "uint256"
 					},
 					{
 						"internalType": "address",
-						"name": "organizer",
+						"name": "instructor",
 						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "isActive",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -403,14 +229,59 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "getUserProfile",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "username",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "purchasedCourses",
+						"type": "uint256[]"
+					},
+					{
 						"internalType": "uint256",
-						"name": "hackathonId",
+						"name": "earnedPoints",
 						"type": "uint256"
 					}
 				],
-				"name": "joinHackathon",
-				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "instructorCourses",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -424,6 +295,37 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "courseId",
+						"type": "uint256"
+					}
+				],
+				"name": "purchaseCourse",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "username",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "registerUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -443,16 +345,28 @@
 					},
 					{
 						"internalType": "string",
-						"name": "name",
+						"name": "username",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
 						"name": "role",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "earnedPoints",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawBalance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -473,7 +387,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/mycontract2.sol": "Learnopoly"
+			"contracts/mycontract3.sol": "Learnopoly"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -487,12 +401,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/mycontract2.sol": {
-			"keccak256": "0x060214b88dd2a1397e7d799aaad2bffa60c87bafeff1bd0d0bc741bd4dd41b29",
+		"contracts/mycontract3.sol": {
+			"keccak256": "0xa7570716db5309de5570b8280bb525fd7b627c87f3ae828fcd99fa8e7c67a520",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://77bc8a83dea3fa525c976b821295b2e23b73a7dcefb82c1cee3fcacfa6301cb4",
-				"dweb:/ipfs/Qmb8wWPgne9CnXH96M1ddjYvQeWVHcc7ArXp2QTGbPQfkR"
+				"bzz-raw://654191bfd7238d94c5edce3050b019650b3e24427495b2d1fe20d644b3b58784",
+				"dweb:/ipfs/QmQc9UJ7D4HTV6SKWe78k9GXAdD8kyoh8V3ycCb2n8D3zE"
 			]
 		}
 	},
