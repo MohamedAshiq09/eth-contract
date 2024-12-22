@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-// Certificate NFT Contract
+
 contract LearnopolyCertificate is ERC721, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -15,7 +15,7 @@ contract LearnopolyCertificate is ERC721, Ownable {
         string courseName;
         address student;
         uint256 issueDate;
-        string ipfsHash;  // Stores certificate metadata
+        string ipfsHash;  
         bool verified;
     }
 
@@ -25,7 +25,7 @@ contract LearnopolyCertificate is ERC721, Ownable {
     event CertificateIssued(uint256 tokenId, address student, string courseName);
     event IssuerAuthorized(address issuer);
 
-    constructor(address initialOwner) 
+    constructor(address initialOwner)
         ERC721("LearnopolyCertificate", "LCERT")
         Ownable(initialOwner)
     {}
