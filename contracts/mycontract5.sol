@@ -62,7 +62,6 @@ contract LearnopolyCertificate is ERC721, Ownable {
     }
 }
 
-// Learning Progress Contract
 contract LearningProgress is Ownable {
     struct Achievement {
         string skillName;
@@ -117,7 +116,6 @@ contract LearningProgress is Ownable {
     }
 }
 
-// Reward Token Contract
 contract LearnopolyToken is ERC20, Ownable {
     mapping(address => bool) public authorizedMinters;
 
@@ -143,7 +141,6 @@ contract LearnopolyToken is ERC20, Ownable {
     }
 }
 
-// Skill Endorsement Contract
 contract SkillEndorsement is Ownable {
     struct Endorsement {
         address endorser;
