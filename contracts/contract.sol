@@ -5,7 +5,6 @@ pragma solidity ^0.8.19;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// LearnopolyCertificate contract
 contract LearnopolyCertificate is ERC721URIStorage, Ownable {
     uint256 private _tokenIdCounter; // Keeps track of token IDs
 
